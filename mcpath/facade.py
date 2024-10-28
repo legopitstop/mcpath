@@ -1,4 +1,3 @@
-from typing import Union
 import os
 
 __all__ = ["MCPath", "JEPath", "BEPath", "PREPath", "EDUPath"]
