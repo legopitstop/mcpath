@@ -1,3 +1,3 @@
-from mcpath import java
+from mcpath import bedrock
 
-print(java.worlds)
+print(bedrock)
