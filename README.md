@@ -1,5 +1,6 @@
 # mcpath
 
+![Tests](https://github.com/legopitstop/mcpath/actions/workflows/tests.yml/badge.svg)
 [![PyPI](https://img.shields.io/pypi/v/mcpath)](https://pypi.org/project/mcpath/)
 [![Python](https://img.shields.io/pypi/pyversions/mcpath)](https://www.python.org/downloads//)
 ![Downloads](https://img.shields.io/pypi/dm/mcpath)
