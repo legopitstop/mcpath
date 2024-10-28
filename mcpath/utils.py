@@ -1,11 +1,11 @@
-from typing import Union
+from typing import Union, Tuple
 import os
 import datetime
 import json
 import requests
 
 
-def _version_to_component(mcversion) -> Union[tuple[str, int], tuple[None, None]]:
+def _version_to_component(mcversion) -> Union[Tuple[str, int], Tuple[None, None]]:
     res = requests.get("https://launchermeta.mojang.com/mc/game/version_manifest.json")
     if res.status_code != 200:
         return None, None
