@@ -44,6 +44,9 @@ class iOSPreviewEdition(Preview):
                 ...
         raise PermissionError()
 
+    def _get_executable(self):
+        return "minecraft-preview://"
+
 
 def instance():
     return iOSPreviewEdition()

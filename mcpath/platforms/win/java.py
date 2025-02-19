@@ -32,6 +32,7 @@ class WinJavaEdition(Java):
         return "java"
 
     def _get_launcher(self):
+        # TODO: Fallback to legacy launcher
         p = path.join(
             "C:\\" + "XboxGames", "Minecraft Launcher", "Content", "Minecraft.exe"
         )

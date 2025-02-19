@@ -44,6 +44,9 @@ class iOSBedrockEdition(Bedrock):
                 ...
         raise PermissionError()
 
+    def _get_executable(self):
+        return "minecraft://"
+
 
 def instance():
     return iOSBedrockEdition()

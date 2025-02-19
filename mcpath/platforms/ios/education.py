@@ -44,6 +44,9 @@ class iOSEducationEdition(Education):
                 ...
         raise PermissionError()
 
+    def _get_executable(self):
+        return "minecraftEdu://"
+
 
 def instance():
     return iOSEducationEdition()

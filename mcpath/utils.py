@@ -1,4 +1,7 @@
 __all__ = [
+    "Platform",
+    "Proxy",
+    "platform",
     "_version_to_component",
     "_get_latest_profile",
     "_get_version_manifest",
@@ -86,6 +89,7 @@ def _get_app():
         ...
     raise NotImplementedError()
 
+
 # From: https://github.com/kivy/plyer/blob/master/plyer/utils.py
 class Platform:
     """
@@ -126,7 +130,10 @@ class Platform:
 
         # Modified to check for ios and ipados
         if self._platform_ios is None:
-            self._platform_ios = _sys_platform.lower() in ['ios', 'ipados'] or environ.get("KIVY_BUILD", "") == "ios"
+            self._platform_ios = (
+                _sys_platform.lower() in ["ios", "ipados"]
+                or environ.get("KIVY_BUILD", "") == "ios"
+            )
 
         # On android, _sys_platform return 'linux2', so prefer to check the
         # import of Android module than trying to rely on _sys_platform.

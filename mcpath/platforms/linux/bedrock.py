@@ -48,8 +48,25 @@ class LinuxBedrockEdition(Bedrock):
             return p
         return None
 
-    def _get_executable_dir(self):
-        raise NotImplementedError()
+    def _get_executable(self):
+        p = path.join(
+            "/var",
+            "lib",
+            "flatpak",
+            "app",
+            "io.mrarm.mcpelauncher",
+            "current",
+            "active",
+            "export",
+            "bin",
+            "io.mrarm.mcpelauncher",
+        )
+        if path.isfile(p):
+            return p
+        return None
+
+    def _get_executable(self):
+        return "minecraft://"
 
 
 def instance():

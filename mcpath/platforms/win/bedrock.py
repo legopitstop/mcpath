@@ -27,6 +27,9 @@ class WinBedrockEdition(Bedrock):
                 return p
         return None
 
+    def _get_executable(self):
+        return "minecraft://"
+
 
 def instance():
     return WinBedrockEdition()

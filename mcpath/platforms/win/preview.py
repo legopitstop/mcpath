@@ -15,6 +15,9 @@ class WinPreviewEdition(Preview):
             return p
         return None
 
+    def _get_executable(self):
+        return "minecraft-preview://"
+
 
 def instance():
     return WinPreviewEdition()

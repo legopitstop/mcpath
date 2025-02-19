@@ -6,7 +6,7 @@ __all__ = ["java", "bedrock", "preview", "education"]
 __version__ = "2.0.0"
 
 from mcpath import facades
-from mcpath.utils import Proxy
+from mcpath.utils import platform, Proxy
 
 java = Proxy("java", facades.Java)
 bedrock = Proxy("bedrock", facades.Bedrock)

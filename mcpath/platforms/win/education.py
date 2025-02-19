@@ -15,6 +15,9 @@ class WinEducationEdition(Education):
             return p
         return None
 
+    def _get_executable(self):
+        return "minecraftEdu://"
+
 
 def instance():
     return WinEducationEdition()

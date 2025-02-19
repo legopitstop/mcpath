@@ -3,7 +3,7 @@ import os
 
 path = mcpath.java.get_launcher()
 if path:
-    if os.name == "nt":  # Windows
-        os.system(f'"{path}"')  # os.startfile makes the launcher crash.
+    if mcpath.platform in ["win", "linux"]:
+        os.system(f'"{path}"')
     else:  # other
-        os.system(f'open "{path}"')
+        print(path)

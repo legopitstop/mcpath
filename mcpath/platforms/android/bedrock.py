@@ -28,6 +28,9 @@ class AndroidBedrockEdition(Bedrock):
             return external
         return None
 
+    def _get_executable(self):
+        return "minecraft://"
+
 
 def instance():
     return AndroidBedrockEdition()
