@@ -17,7 +17,10 @@ class WinBedrockEdition(Bedrock):
         return None
 
     def _get_logs_dir(self):
-        path_parts = self.get_game_dir().split(os.sep)
+        game_dir = self.get_game_dir()
+        if game_dir is None:
+            return None
+        path_parts = game_dir.split(os.sep)
         if len(path_parts) > 2:
             p = path.join(os.sep.join(path_parts[:-2]), "logs")
             if path.isdir(p):
