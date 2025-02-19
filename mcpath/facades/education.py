@@ -14,7 +14,4 @@ class Education(Bedrock):
     Education Edition facade.
     """
 
-    # private
-
-    def _get_executable(self):
-        return "minecraftEdu://"
+    ...

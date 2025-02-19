@@ -95,10 +95,10 @@ class Bedrock:
     # private
 
     def _get_game_dir(self):
-        raise NotImplementedError()
+        return None
 
     def _get_executable(self):
-        return "minecraft://"
+        return None
 
     def _get_worlds_dir(self):
         game_dir = self.get_game_dir()

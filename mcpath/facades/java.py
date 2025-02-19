@@ -71,16 +71,16 @@ class Java:
     # private
 
     def _get_runtime(self, version):
-        raise NotImplementedError()
+        return None
 
     def _get_launcher(self):
-        raise NotImplementedError()
+        return None
 
     def _get_game_dir(self):
-        raise NotImplementedError()
+        return None
 
     def _get_versions_dir(self):
-        raise NotImplementedError()
+        return None
 
     def _get_saves_dir(self):
         game_dir = self.get_game_dir()
