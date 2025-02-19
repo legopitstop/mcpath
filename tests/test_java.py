@@ -1,6 +1,10 @@
 import mcpath
+import pytest
 
 
+@pytest.mark.xfail(
+    raises=NotImplementedError, reason="Feature not supported on this platform"
+)
 def test_java():
     mcpath.java.get_runtime("1.21.3")
     mcpath.java.get_game_dir()

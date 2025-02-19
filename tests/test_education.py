@@ -1,6 +1,10 @@
 import mcpath
+import pytest
 
 
+@pytest.mark.xfail(
+    raises=NotImplementedError, reason="Feature not supported on this platform"
+)
 def test_education():
     mcpath.education.get_game_dir()
     mcpath.education.get_executable()
