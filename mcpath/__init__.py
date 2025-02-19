@@ -1,18 +1,14 @@
-import sys
+"""
+Get paths to Minecraft Java, Bedrock, Preview, and Education Edition folders.
+"""
 
-__version__ = "1.1.0"
+__all__ = ["java", "bedrock", "preview", "education"]
+__version__ = "2.0.0"
 
-from .facade import MCPath, JEPath, BEPath, PREPath, EDUPath
+from mcpath import facades
+from mcpath.utils import Proxy
 
-if sys.platform == "win32":
-    from ._windows import java, bedrock, preview, education, get_runtime
-elif sys.platform == "darwin":
-    from ._darwin import java, bedrock, preview, education, get_runtime
-elif sys.platform in ["ios", "iPadOS"]:
-    from ._ios import java, bedrock, preview, education, get_runtime
-elif sys.platform == "linux" and hasattr(sys, "getandroidapilevel"):
-    from ._android import java, bedrock, preview, education, get_runtime
-elif sys.platform == "linux":
-    from ._linux import java, bedrock, preview, education, get_runtime
-else:
-    from ._dummy import java, bedrock, preview, education, get_runtime
+java = Proxy("java", facades.Java)
+bedrock = Proxy("bedrock", facades.Bedrock)
+preview = Proxy("preview", facades.Preview)
+education = Proxy("education", facades.Education)

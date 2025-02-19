@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - unreleased
+
+### Breaking
+
+> This update is not backwards compatible!
+
+- Rewrote package to match [plyer](https://pypi.org/project/plyer/)'s structure.
+- Example using the new structure.
+
+```py
+import mcpath
+
+mcpath.bedrock.get_worlds_dir() # Returns the worlds folder for Bedrock
+mcpath.java.get_backups_dir() # Returns the world backups folder for Java
+
+mcpath.java.get_runtime('1.21.3') # Returns the java runtime executable for the Minecraft version
+```
+
+### General
+
+- If a path doesn't exist, it will return None.
+
 ## [1.1.0] - 10/27/2024
 
 ### General
