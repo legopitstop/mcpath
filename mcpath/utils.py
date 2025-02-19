@@ -86,7 +86,7 @@ def _get_app():
         ...
     raise NotImplementedError()
 
-
+# From: https://github.com/kivy/plyer/blob/master/plyer/utils.py
 class Platform:
     """
     Refactored to class to allow module function to be replaced
@@ -124,8 +124,9 @@ class Platform:
                 hasattr(sys, "getandroidapilevel") or "ANDROID_ARGUMENT" in environ
             )
 
+        # Modified to check for ios and ipados
         if self._platform_ios is None:
-            self._platform_ios = environ.get("KIVY_BUILD", "") == "ios"
+            self._platform_ios = _sys_platform.lower() in ['ios', 'ipados'] or environ.get("KIVY_BUILD", "") == "ios"
 
         # On android, _sys_platform return 'linux2', so prefer to check the
         # import of Android module than trying to rely on _sys_platform.
@@ -146,6 +147,7 @@ class Platform:
 platform = Platform()
 
 
+# From: https://github.com/kivy/plyer/blob/master/plyer/utils.py
 class Proxy:
     """
     Based on http://code.activestate.com/recipes/496741-object-proxying
