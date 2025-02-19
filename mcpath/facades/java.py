@@ -83,16 +83,31 @@ class Java:
         raise NotImplementedError()
 
     def _get_saves_dir(self):
-        return path.join(self.get_game_dir(), "saves")
+        game_dir = self.get_game_dir()
+        if game_dir is None:
+            return None
+        return path.join(game_dir, "saves")
 
     def _get_resource_packs_dir(self):
-        return path.join(self.get_game_dir(), "resourcepacks")
+        game_dir = self.get_game_dir()
+        if game_dir is None:
+            return None
+        return path.join(game_dir, "resourcepacks")
 
     def _get_screenshots_dir(self):
-        return path.join(self.get_game_dir(), "screenshots")
+        game_dir = self.get_game_dir()
+        if game_dir is None:
+            return None
+        return path.join(game_dir, "screenshots")
 
     def _get_backups_dir(self):
-        return path.join(self.get_game_dir(), "backups")
+        game_dir = self.get_game_dir()
+        if game_dir is None:
+            return None
+        return path.join(game_dir, "backups")
 
     def _get_logs_dir(self):
-        return path.join(self.get_game_dir(), "logs")
+        game_dir = self.get_game_dir()
+        if game_dir is None:
+            return None
+        return path.join(game_dir, "logs")
