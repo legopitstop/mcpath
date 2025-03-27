@@ -9,7 +9,7 @@ __all__ = [
     "_get_app",
 ]
 
-from typing import Union, Tuple, Callable, ParamSpec, TypeVar
+from typing import Union, Tuple, Callable, TypeVar
 from os import environ
 from sys import platform as _sys_platform
 import os
@@ -20,6 +20,10 @@ import sys
 import functools
 import requests_cache
 import warnings
+try:
+    from typing import ParamSpec
+except ImportError:
+    from typing_extensions import ParamSpec
 
 _session = requests_cache.CachedSession(".cache/http_cache")
 
