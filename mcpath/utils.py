@@ -2,13 +2,14 @@ __all__ = [
     "Platform",
     "Proxy",
     "platform",
+    "deprecated",
     "_version_to_component",
     "_get_latest_profile",
     "_get_version_manifest",
     "_get_app",
 ]
 
-from typing import Union, Tuple
+from typing import Union, Tuple, Callable, ParamSpec, TypeVar
 from os import environ
 from sys import platform as _sys_platform
 import os
@@ -18,7 +19,7 @@ import requests
 import sys
 import functools
 import requests_cache
-
+import warnings
 
 _session = requests_cache.CachedSession(".cache/http_cache")
 
@@ -222,3 +223,26 @@ class Proxy:
     def __repr__(self):
         object.__getattribute__(self, "_ensure_obj")()
         return repr(object.__getattribute__(self, "_obj"))
+
+
+rT = TypeVar("rT")
+pT = ParamSpec("pT")
+
+
+def deprecated(func: Callable[pT, rT]) -> Callable[pT, rT]:
+    """Use this decorator to mark functions as deprecated.
+    Every time the decorated function runs, it will emit
+    a "deprecation" warning."""
+
+    @functools.wraps(func)
+    def new_func(*args: pT.args, **kwargs: pT.kwargs):
+        warnings.simplefilter("always", DeprecationWarning)  # turn off filter
+        warnings.warn(
+            "Call to a deprecated function {}.".format(func.__name__),
+            category=DeprecationWarning,
+            stacklevel=2,
+        )
+        warnings.simplefilter("default", DeprecationWarning)  # reset filter
+        return func(*args, **kwargs)
+
+    return new_func

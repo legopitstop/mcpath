@@ -7,7 +7,8 @@ Linux, MacOS, Windows
 __all__ = ["Java"]
 
 from os import path
-from warnings import deprecated
+
+from ..utils import deprecated
 
 
 class Java:
@@ -86,47 +87,47 @@ class Java:
     # backwards compatibility
 
     @property
-    @deprecated("Use get_game_dir instead")
+    @deprecated
     def game(self):
         return self.get_game_dir()
 
     @property
-    @deprecated("Use get_launcher instead")
+    @deprecated
     def launcher(self):
         return self.get_launcher()
 
     @property
-    @deprecated("Use get_versions_dir instead")
+    @deprecated
     def executable(self):
         return self.get_versions_dir()
 
     @property
-    @deprecated("Use get_saves_dir instead")
+    @deprecated
     def worlds(self):
         return self.get_saves_dir()
 
     @property
-    @deprecated("Use get_resource_packs_dir instead")
+    @deprecated
     def resource_packs(self):
         return self.get_resource_packs_dir()
 
     @property
-    @deprecated("Use get_behavior_packs instead")
+    @deprecated
     def behavior_packs(self):
         return ""
 
     @property
-    @deprecated("Use get_development_resource_packs instead")
+    @deprecated
     def development_resource_packs(self):
         return self.get_resource_packs_dir()
 
     @property
-    @deprecated("Use get_development_behavior_packs instead")
+    @deprecated
     def development_behavior_packs(self):
         return ""
 
     @property
-    @deprecated("Use get_screenshots_dir instead")
+    @deprecated
     def screenshots(self):
         return self.get_screenshots_dir()
 

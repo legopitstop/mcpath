@@ -7,8 +7,9 @@ Android, iOS, Linux, MacOS, Windows
 __all__ = ["Bedrock"]
 
 from os import path
-from warnings import deprecated
 import webbrowser
+
+from ..utils import deprecated
 
 
 class Bedrock:
@@ -103,47 +104,47 @@ class Bedrock:
     # backwards compatibility
 
     @property
-    @deprecated("Use get_game_dir instead")
+    @deprecated
     def game(self):
         return self.get_game_dir()
 
     @property
-    @deprecated("Use get_launcher instead")
+    @deprecated
     def launcher(self):
         return ""
 
     @property
-    @deprecated("Use get_executable instead")
+    @deprecated
     def executable(self):
         return self.get_executable()
 
     @property
-    @deprecated("Use get_worlds_dir instead")
+    @deprecated
     def worlds(self):
         return self.get_worlds_dir()
 
     @property
-    @deprecated("Use get_resource_packs_dir instead")
+    @deprecated
     def resource_packs(self):
         return self.get_resource_packs_dir()
 
     @property
-    @deprecated("Use get_behavior_packs instead")
+    @deprecated
     def behavior_packs(self):
         return self.get_behavior_packs_dir()
 
     @property
-    @deprecated("Use get_development_resource_packs instead")
+    @deprecated
     def development_resource_packs(self):
         return self.get_development_resource_packs_dir()
 
     @property
-    @deprecated("Use get_development_behavior_packs instead")
+    @deprecated
     def development_behavior_packs(self):
         return self.get_development_behavior_packs_dir()
 
     @property
-    @deprecated("Use get_screenshots_dir instead")
+    @deprecated
     def screenshots(self):
         return self.get_screenshots_dir()
 
