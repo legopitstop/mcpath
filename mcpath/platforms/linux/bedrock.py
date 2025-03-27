@@ -5,9 +5,16 @@ Linux Bedrock Edition
 from os import path
 from mcpath.facades import Bedrock
 import configparser
+import os
 
 
 class LinuxBedrockEdition(Bedrock):
+    def _launch(self):
+        path = self.get_executable()
+        if path:
+            os.system(f'"{ path }"')
+        return path
+
     def _get_game_dir(self):
         fp = path.join(
             path.expanduser("~"),
@@ -64,9 +71,6 @@ class LinuxBedrockEdition(Bedrock):
         if path.isfile(p):
             return p
         return None
-
-    def _get_executable(self):
-        return "minecraft://"
 
 
 def instance():

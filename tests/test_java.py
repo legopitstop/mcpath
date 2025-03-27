@@ -14,3 +14,15 @@ def test_java():
     mcpath.java.get_resource_packs_dir()
     mcpath.java.get_screenshots_dir()
     mcpath.java.get_logs_dir()
+
+
+def test_deprecated_java():
+    mcpath.java.game
+    mcpath.java.launcher
+    mcpath.java.executable
+    mcpath.java.worlds
+    mcpath.java.resource_packs
+    mcpath.java.behavior_packs
+    mcpath.java.development_resource_packs
+    mcpath.java.development_behavior_packs
+    mcpath.java.screenshots

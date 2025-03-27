@@ -16,3 +16,15 @@ def test_bedrock():
     mcpath.bedrock.get_development_skin_packs_dir()
     mcpath.bedrock.get_screenshots_dir()
     mcpath.bedrock.get_logs_dir()
+
+
+def test_deprecated_bedrock():
+    mcpath.bedrock.game
+    mcpath.bedrock.launcher
+    mcpath.bedrock.executable
+    mcpath.bedrock.worlds
+    mcpath.bedrock.resource_packs
+    mcpath.bedrock.behavior_packs
+    mcpath.bedrock.development_resource_packs
+    mcpath.bedrock.development_behavior_packs
+    mcpath.bedrock.screenshots

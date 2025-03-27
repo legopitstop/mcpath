@@ -44,12 +44,34 @@ Update existing installation: `pip3 install mcpath --upgrade`
 
 ## Examples
 
+### Saves
+
 ```Python
 import mcpath
 
 print(mcpath.java.get_saves_dir())
 # C:\Users\USER\AppData\Roaming\.minecraft\saves
 ```
+
+### `.minecraft`
+
+```Python
+import mcpath
+
+print(mcpath.java.get_root_dir())
+# C:\Users\USER\AppData\Roaming\.minecraft
+```
+
+### Game
+
+```Python
+import mcpath
+
+print(mcpath.java.get_game_dir())
+# D:\minecraft
+```
+
+### Java Runtime Executable
 
 ```Python
 import mcpath

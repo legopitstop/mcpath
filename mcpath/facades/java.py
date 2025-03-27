@@ -7,6 +7,7 @@ Linux, MacOS, Windows
 __all__ = ["Java"]
 
 from os import path
+from warnings import deprecated
 
 
 class Java:
@@ -14,15 +15,29 @@ class Java:
     Java Edition facade.
     """
 
+    def launch(self):
+        """
+        Launches Minecraft.
+        """
+        return self._launch()
+
     def get_runtime(self, version: str):
         """
         Get the path to the java runtime executable.
         """
         return self._get_runtime(version)
 
+    def get_root_dir(self):
+        """
+        Get the path to the `.minecraft` folder.
+        """
+        return self._get_root_dir()
+
     def get_game_dir(self):
         """
-        Get the path to the main Minecraft folder.
+        Get the path to the game directory.
+
+        NOTE: If you want the `.minecraft` folder use get_root_dir instead.
         """
         return self._get_game_dir()
 
@@ -68,9 +83,62 @@ class Java:
         """
         return self._get_logs_dir()
 
+    # backwards compatibility
+
+    @property
+    @deprecated("Use get_game_dir instead")
+    def game(self):
+        return self.get_game_dir()
+
+    @property
+    @deprecated("Use get_launcher instead")
+    def launcher(self):
+        return self.get_launcher()
+
+    @property
+    @deprecated("Use get_versions_dir instead")
+    def executable(self):
+        return self.get_versions_dir()
+
+    @property
+    @deprecated("Use get_saves_dir instead")
+    def worlds(self):
+        return self.get_saves_dir()
+
+    @property
+    @deprecated("Use get_resource_packs_dir instead")
+    def resource_packs(self):
+        return self.get_resource_packs_dir()
+
+    @property
+    @deprecated("Use get_behavior_packs instead")
+    def behavior_packs(self):
+        return ""
+
+    @property
+    @deprecated("Use get_development_resource_packs instead")
+    def development_resource_packs(self):
+        return self.get_resource_packs_dir()
+
+    @property
+    @deprecated("Use get_development_behavior_packs instead")
+    def development_behavior_packs(self):
+        return ""
+
+    @property
+    @deprecated("Use get_screenshots_dir instead")
+    def screenshots(self):
+        return self.get_screenshots_dir()
+
     # private
 
+    def _launch(self):
+        return None
+
     def _get_runtime(self, version):
+        return None
+
+    def _get_root_dir(self):
         return None
 
     def _get_launcher(self):
@@ -80,7 +148,10 @@ class Java:
         return None
 
     def _get_versions_dir(self):
-        return None
+        root_dir = self.get_root_dir()
+        if root_dir is None:
+            return None
+        return path.join(root_dir, "versions")
 
     def _get_saves_dir(self):
         game_dir = self.get_game_dir()

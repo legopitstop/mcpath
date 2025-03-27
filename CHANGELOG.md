@@ -8,18 +8,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Breaking
 
+> [!WARNING]  
 > This update is not backwards compatible!
 
-- Rewrote package to match [plyer](https://pypi.org/project/plyer/)'s structure.
+- Rewrote package structure.
 - Example using the new structure.
 
 ```py
 import mcpath
 
-mcpath.bedrock.get_worlds_dir() # Returns the worlds folder for Bedrock
-mcpath.java.get_backups_dir() # Returns the world backups folder for Java
+mcpath.bedrock.get_worlds_dir() # ...\\com.mojang\\minecraftWorlds
+mcpath.java.get_backups_dir() # ...\\.minecraft\\backups
 
-mcpath.java.get_runtime('1.21.3') # Returns the java runtime executable for the Minecraft version
+mcpath.java.get_runtime('1.21.3') # ...\\java-runtime-delta\\bin\\java.exe
 ```
 
 ### General

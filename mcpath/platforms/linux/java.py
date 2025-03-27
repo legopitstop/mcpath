@@ -5,9 +5,16 @@ Linux Java Edition
 from os import path
 from mcpath.facades import Java
 from mcpath.utils import _get_latest_profile, _version_to_component
+import os
 
 
 class LinuxJavaEdition(Java):
+    def _launch(self):
+        path = self.get_launcher()
+        if path:
+            os.system(f'"{path}"')
+        return path
+
     def _get_runtime(self, version):
         component, major_version = _version_to_component(version)
         if component is None:
@@ -45,8 +52,8 @@ class LinuxJavaEdition(Java):
             return p
         return None
 
-    def _get_versions_dir(self):
-        p = path.join(path.expanduser("~"), ".minecraft", "versions")
+    def _get_root_dir(self):
+        p = path.join(path.expanduser("~"), ".minecraft")
         if path.isdir(p):
             return p
         return None

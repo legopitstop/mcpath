@@ -63,13 +63,12 @@ class OSXJavaEdition(Java):
             return p
         return None
 
-    def _get_versions_dir(self):
+    def _get_root_dir(self):
         p = path.join(
             path.expanduser("~"),
             "Library",
             "Application Support",
             "minecraft",
-            "versions",
         )
         if path.isdir(p):
             return p

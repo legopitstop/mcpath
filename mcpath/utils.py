@@ -19,6 +19,7 @@ import sys
 import functools
 import requests_cache
 
+
 _session = requests_cache.CachedSession(".cache/http_cache")
 
 

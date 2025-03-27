@@ -5,9 +5,16 @@ Windows Java Edition
 from os import path
 from mcpath.facades import Java
 from mcpath.utils import _get_latest_profile, _version_to_component
+import os
 
 
 class WinJavaEdition(Java):
+    def _launch(self):
+        path = self.get_launcher()
+        if path:
+            os.system(f'"{path}"')
+        return path
+
     def _get_runtime(self, version):
         component, major_version = _version_to_component(version)
         if component is None:
@@ -31,10 +38,21 @@ class WinJavaEdition(Java):
             return p
         return "java"
 
+    def _get_root_dir(self):
+        p = path.expandvars("%APPDATA%\\.minecraft")
+        if path.isdir(p):
+            return p
+        return None
+
     def _get_launcher(self):
-        # TODO: Fallback to legacy launcher
         p = path.join(
             "C:\\" + "XboxGames", "Minecraft Launcher", "Content", "Minecraft.exe"
+        )
+        if path.isfile(p):
+            return p
+        # fallback
+        p = path.join(
+            "C:\\", "Program Files (x86)", "Minecraft Launcher", "MinecraftLauncher.exe"
         )
         if path.isfile(p):
             return p
@@ -46,16 +64,7 @@ class WinJavaEdition(Java):
         if p and path.isdir(p):
             return p
         # fallback
-        p = path.expandvars("%APPDATA%\\.minecraft")
-        if path.isdir(p):
-            return p
-        return None
-
-    def _get_versions_dir(self):
-        p = path.expandvars("%APPDATA%\\.minecraft\\versions")
-        if path.isdir(p):
-            return p
-        return None
+        return self.get_root_dir()
 
 
 def instance():
