@@ -6,11 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [2.0.0] - unreleased
 
-### Breaking
+### General
 
-> [!WARNING]  
-> This update is not backwards compatible!
-
+- If a path doesn't exist, it will return None.
 - Rewrote package structure.
 - Example using the new structure.
 
@@ -22,10 +20,6 @@ mcpath.java.get_backups_dir() # ...\\.minecraft\\backups
 
 mcpath.java.get_runtime('1.21.3') # ...\\java-runtime-delta\\bin\\java.exe
 ```
-
-### General
-
-- If a path doesn't exist, it will return None.
 
 ## [1.1.0] - 10/27/2024
 

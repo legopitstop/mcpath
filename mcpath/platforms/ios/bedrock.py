@@ -2,37 +2,20 @@
 iOS Bedrock Edition
 """
 
-from os import path
 from mcpath.facades import Bedrock
 from mcpath.utils import _get_app
-import os
 
 
 class iOSBedrockEdition(Bedrock):
     def _get_game_dir(self):
-        id = "EE96DC3D-86D7-4109-9A8D-D33CDDE06D7B"
-        p = path.join(
-            "/private",
-            "var",
-            "mobile",
-            "Containers",
-            "Data",
-            "Application",
-            id,
-            "Documents",
-            "games",
-            "com.mojang",
-        )
-        if os.access(p, os.R_OK):
-            return p
         app = _get_app()
         match app:
             case "pyto":
                 import file_system
 
                 while True:
-                    d = file_system.pick_directory()
-                    if id in d:
+                    p = file_system.pick_directory()
+                    if p.endswith("games/com.mojang"):
                         return p
                     print("Invalid directory!")
             case "pythonista":

@@ -20,6 +20,7 @@ import sys
 import functools
 import requests_cache
 import warnings
+
 try:
     from typing import ParamSpec
 except ImportError:
