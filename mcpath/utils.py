@@ -26,7 +26,7 @@ try:
 except ImportError:
     from typing_extensions import ParamSpec
 
-_session = requests_cache.CachedSession(".cache/http_cache")
+_session = requests_cache.CachedSession()
 
 
 @functools.lru_cache()
