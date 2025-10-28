@@ -5,7 +5,8 @@ iOS Java Edition
 from mcpath.facades import Java
 
 
-class iOSJavaEdition(Java): ...
+class iOSJavaEdition(Java):
+    pass
 
 
 def instance():

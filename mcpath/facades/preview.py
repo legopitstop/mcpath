@@ -14,4 +14,4 @@ class Preview(Bedrock):
     Preview Edition facade.
     """
 
-    ...
+    pass

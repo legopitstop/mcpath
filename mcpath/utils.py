@@ -80,20 +80,24 @@ def _get_latest_profile(fp) -> Union[str, None]:
 
 def _get_app():
     """
-    Get the Python app thats running this script.
+    Detect the Python app thats running this script.
     """
+    # Pythonista module
     try:
-        import appex  # Pythonista module
+        import appex  # noqa: F401
 
         return "pythonista"
     except ImportError:
-        ...
+        pass
+
+    # Pyto module
     try:
-        import pyto_ui  # Pyto module
+
+        import pyto_ui  # noqa: F401
 
         return "pyto"
     except ImportError:
-        ...
+        pass
     raise NotImplementedError()
 
 

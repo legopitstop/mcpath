@@ -35,13 +35,14 @@ class iOSEducationEdition(Education):
                     if id in d:
                         return p
                     print("Invalid directory!")
+
             case "pythonista":
                 # 1. Tap the hamburger menu at the top left
                 # 2. Under "EXTERNAL FILES" tap "Open..."
                 # 3. Then tap "Folder..."
                 # 5. Navigate to your Minecraft folder and tap "Open"
                 # 6. Finally, run the script again.
-                ...
+                pass
         raise PermissionError()
 
     def _get_executable(self):

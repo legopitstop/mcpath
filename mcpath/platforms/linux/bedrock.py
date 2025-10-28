@@ -12,7 +12,7 @@ class LinuxBedrockEdition(Bedrock):
     def _launch(self):
         path = self.get_executable()
         if path:
-            os.system(f'"{ path }"')
+            os.system(f'"{path}"')
         return path
 
     def _get_game_dir(self):
@@ -32,13 +32,19 @@ class LinuxBedrockEdition(Bedrock):
                 config.read(fp)
                 if config.has_section("General"):
                     general = config["General"]
-                    profile = config[general.get("selected")]
-                    p = path.join(profile.get("dataDir"), "games", "com.mojang")
+                    sel = general.get("selected")
+                    if not sel:
+                        return None
+                    profile = config[sel]
+                    data_dir = profile.get("dataDir")
+                    if not data_dir:
+                        return None
+                    p = path.join(data_dir, "games", "com.mojang")
                     if path.isdir(p):
                         return p
                     return None
             except KeyError:
-                ...
+                pass
 
         # Fallback
         p = path.join(

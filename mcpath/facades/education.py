@@ -14,4 +14,4 @@ class Education(Bedrock):
     Education Edition facade.
     """
 
-    ...
+    pass

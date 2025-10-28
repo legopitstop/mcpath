@@ -6,7 +6,8 @@ from mcpath.facades import Education
 
 
 # https://play.google.com/store/apps/details?id=com.mojang.minecraftedu
-class AndroidEducationEdition(Education): ...
+class AndroidEducationEdition(Education):
+    pass
 
 
 def instance():

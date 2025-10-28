@@ -2,7 +2,14 @@
 Get paths to Minecraft Java, Bedrock, Preview, and Education Edition folders.
 """
 
-__all__ = ["java", "bedrock", "preview", "education", "platform", "get_edition"]
+__all__ = [
+    "java",
+    "bedrock",
+    "preview",
+    "education",
+    "platform",
+    "get_edition",
+]
 __version__ = "2.0.2"
 
 from typing import Optional
@@ -16,7 +23,8 @@ education = Proxy("education", facades.Education)
 
 
 def get_edition(name: str) -> Optional[Proxy]:
-    match name.lower():
+    name = name.lower()
+    match name:
         case "java":
             return java
         case "bedrock":

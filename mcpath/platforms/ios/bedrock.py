@@ -24,7 +24,7 @@ class iOSBedrockEdition(Bedrock):
                 # 3. Then tap "Folder..."
                 # 5. Navigate to your Minecraft folder and tap "Open"
                 # 6. Finally, run the script again.
-                ...
+                pass
         raise PermissionError()
 
     def _get_executable(self):
