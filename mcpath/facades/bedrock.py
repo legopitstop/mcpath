@@ -6,6 +6,7 @@ Android, iOS, Linux, MacOS, Windows
 
 __all__ = ["Bedrock"]
 
+from typing import Optional
 from os import path
 import webbrowser
 
@@ -156,73 +157,73 @@ class Bedrock:
             webbrowser.open(url)
         return url
 
-    def _get_game_dir(self):
+    def _get_game_dir(self) -> Optional[str]:
         return None
 
-    def _get_executable(self):
+    def _get_executable(self) -> Optional[str]:
         return None
 
-    def _get_worlds_dir(self):
+    def _get_worlds_dir(self) -> Optional[str]:
         game_dir = self.get_game_dir()
         if game_dir is None:
             return None
         return path.join(game_dir, "minecraftWorlds")
 
-    def _get_world_templates_dir(self):
+    def _get_world_templates_dir(self) -> Optional[str]:
         game_dir = self.get_game_dir()
         if game_dir is None:
             return None
         return path.join(game_dir, "world_templates")
 
-    def _get_resource_packs_dir(self):
+    def _get_resource_packs_dir(self) -> Optional[str]:
         game_dir = self.get_game_dir()
         if game_dir is None:
             return None
         return path.join(game_dir, "resource_packs")
 
-    def _get_behavior_packs_dir(self):
+    def _get_behavior_packs_dir(self) -> Optional[str]:
         game_dir = self.get_game_dir()
         if game_dir is None:
             return None
         return path.join(game_dir, "behavior_packs")
 
-    def _get_skin_packs_dir(self):
+    def _get_skin_packs_dir(self) -> Optional[str]:
         game_dir = self.get_game_dir()
         if game_dir is None:
             return None
         return path.join(game_dir, "skin_packs")
 
-    def _get_development_resource_packs_dir(self):
+    def _get_development_resource_packs_dir(self) -> Optional[str]:
         game_dir = self.get_game_dir()
         if game_dir is None:
             return None
         return path.join(game_dir, "development_resource_packs")
 
-    def _get_development_behavior_packs_dir(self):
+    def _get_development_behavior_packs_dir(self) -> Optional[str]:
         game_dir = self.get_game_dir()
         if game_dir is None:
             return None
         return path.join(game_dir, "development_behavior_packs")
 
-    def _get_development_skin_packs_dir(self):
+    def _get_development_skin_packs_dir(self) -> Optional[str]:
         game_dir = self.get_game_dir()
         if game_dir is None:
             return None
         return path.join(game_dir, "development_skin_packs")
 
-    def _get_custom_skins_dir(self):
+    def _get_custom_skins_dir(self) -> Optional[str]:
         game_dir = self.get_game_dir()
         if game_dir is None:
             return None
         return path.join(game_dir, "custom_skins")
 
-    def _get_screenshots_dir(self):
+    def _get_screenshots_dir(self) -> Optional[str]:
         game_dir = self.get_game_dir()
         if game_dir is None:
             return None
         return path.join(game_dir, "Screenshots")
 
-    def _get_logs_dir(self):
+    def _get_logs_dir(self) -> Optional[str]:
         game_dir = self.get_game_dir()
         if game_dir is None:
             return None

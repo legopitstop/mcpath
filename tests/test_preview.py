@@ -19,12 +19,18 @@ def test_preview():
 
 
 def test_deprecated_preview():
-    mcpath.preview.game
-    mcpath.preview.launcher
-    mcpath.preview.executable
-    mcpath.preview.worlds
-    mcpath.preview.resource_packs
-    mcpath.preview.behavior_packs
-    mcpath.preview.development_resource_packs
-    mcpath.preview.development_behavior_packs
-    mcpath.preview.screenshots
+    attrs = [
+        "game",
+        "launcher",
+        "executable",
+        "worlds",
+        "resource_packs",
+        "behavior_packs",
+        "development_resource_packs",
+        "development_behavior_packs",
+        "screenshots",
+    ]
+
+    for attr in attrs:
+        with pytest.warns(DeprecationWarning):
+            getattr(mcpath.preview, attr)

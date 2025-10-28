@@ -19,12 +19,18 @@ def test_education():
 
 
 def test_deprecated_education():
-    mcpath.education.game
-    mcpath.education.launcher
-    mcpath.education.executable
-    mcpath.education.worlds
-    mcpath.education.resource_packs
-    mcpath.education.behavior_packs
-    mcpath.education.development_resource_packs
-    mcpath.education.development_behavior_packs
-    mcpath.education.screenshots
+    attrs = [
+        "game",
+        "launcher",
+        "executable",
+        "worlds",
+        "resource_packs",
+        "behavior_packs",
+        "development_resource_packs",
+        "development_behavior_packs",
+        "screenshots",
+    ]
+
+    for attr in attrs:
+        with pytest.warns(DeprecationWarning):
+            getattr(mcpath.education, attr)

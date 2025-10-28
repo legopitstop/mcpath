@@ -17,12 +17,18 @@ def test_java():
 
 
 def test_deprecated_java():
-    mcpath.java.game
-    mcpath.java.launcher
-    mcpath.java.executable
-    mcpath.java.worlds
-    mcpath.java.resource_packs
-    mcpath.java.behavior_packs
-    mcpath.java.development_resource_packs
-    mcpath.java.development_behavior_packs
-    mcpath.java.screenshots
+    attrs = [
+        "game",
+        "launcher",
+        "executable",
+        "worlds",
+        "resource_packs",
+        "behavior_packs",
+        "development_resource_packs",
+        "development_behavior_packs",
+        "screenshots",
+    ]
+
+    for attr in attrs:
+        with pytest.warns(DeprecationWarning):
+            getattr(mcpath.java, attr)

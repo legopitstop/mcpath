@@ -9,7 +9,7 @@ __all__ = [
     "_get_app",
 ]
 
-from typing import Union, Tuple, Callable, TypeVar
+from typing import Union, Tuple, Callable, TypeVar, Optional, Any
 from os import environ
 from sys import platform as _sys_platform
 import os
@@ -21,17 +21,17 @@ import functools
 import requests_cache
 import warnings
 
-try:
-    from typing import ParamSpec
-except ImportError:
-    from typing_extensions import ParamSpec
+from typing_extensions import ParamSpec
 
 _session = requests_cache.CachedSession()
 
 
 @functools.lru_cache()
 def _version_to_component(mcversion) -> Union[Tuple[str, int], Tuple[None, None]]:
-    for version in _get_version_manifest()["versions"]:
+    manifest = _get_version_manifest()
+    if not manifest:
+        return None, None
+    for version in manifest["versions"]:
         if version["id"] == mcversion:
             res = _session.get(version["url"])
             if not res.ok:
@@ -49,7 +49,7 @@ def _version_to_component(mcversion) -> Union[Tuple[str, int], Tuple[None, None]
 MANIFEST_CACHE = None
 
 
-def _get_version_manifest():
+def _get_version_manifest() -> Optional[Any]:
     global MANIFEST_CACHE
     if not MANIFEST_CACHE:
         res = requests.get(
@@ -251,3 +251,14 @@ def deprecated(func: Callable[pT, rT]) -> Callable[pT, rT]:
         return func(*args, **kwargs)
 
     return new_func
+
+
+def step_back(dir: str, stepsBack: int, suffix: str = "") -> Optional[str]:
+    if dir is None:
+        return None
+    path_parts = dir.split(os.sep)
+    if len(path_parts) > stepsBack:
+        dir = os.path.join(os.sep.join(path_parts[:-stepsBack]), suffix)
+        if os.path.isdir(dir):
+            return dir
+    return None

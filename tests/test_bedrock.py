@@ -19,12 +19,18 @@ def test_bedrock():
 
 
 def test_deprecated_bedrock():
-    mcpath.bedrock.game
-    mcpath.bedrock.launcher
-    mcpath.bedrock.executable
-    mcpath.bedrock.worlds
-    mcpath.bedrock.resource_packs
-    mcpath.bedrock.behavior_packs
-    mcpath.bedrock.development_resource_packs
-    mcpath.bedrock.development_behavior_packs
-    mcpath.bedrock.screenshots
+    attrs = [
+        "game",
+        "launcher",
+        "executable",
+        "worlds",
+        "resource_packs",
+        "behavior_packs",
+        "development_resource_packs",
+        "development_behavior_packs",
+        "screenshots",
+    ]
+
+    for attr in attrs:
+        with pytest.warns(DeprecationWarning):
+            getattr(mcpath.bedrock, attr)

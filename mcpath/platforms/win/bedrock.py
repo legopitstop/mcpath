@@ -2,13 +2,32 @@
 Windows Bedrock Edition
 """
 
+from typing import Optional
 from os import path
 from mcpath.facades import Bedrock
-import os
+from mcpath.utils import step_back
 
 
 class WinBedrockEdition(Bedrock):
-    def _get_game_dir(self):
+
+    def is_old(self, path: str) -> bool:
+        return "Microsoft.MinecraftUWP" in path
+
+    def _get_game_gdk(self) -> Optional[str]:
+        """
+        New path
+        """
+        p = path.expandvars(
+            "%appdata%\\Minecraft Bedrock\\users\\shared\\games\\com.mojang"
+        )
+        if path.isdir(p):
+            return p
+        return None
+
+    def _get_game_uwp(self) -> Optional[str]:
+        """
+        Old path
+        """
         p = path.expandvars(
             "%LOCALAPPDATA%\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang"
         )
@@ -16,16 +35,24 @@ class WinBedrockEdition(Bedrock):
             return p
         return None
 
+    def _get_game_dir(self):
+        gdk = self._get_game_gdk()
+        if gdk:
+            return gdk
+
+        # Fallback to old path
+        return self._get_game_uwp()
+
     def _get_logs_dir(self):
         game_dir = self.get_game_dir()
-        if game_dir is None:
+
+        if not game_dir:
             return None
-        path_parts = game_dir.split(os.sep)
-        if len(path_parts) > 2:
-            p = path.join(os.sep.join(path_parts[:-2]), "logs")
-            if path.isdir(p):
-                return p
-        return None
+        # old
+        if self.is_old(game_dir):
+            return step_back(game_dir, 2, "logs")
+        # new
+        return step_back(game_dir, 4, "logs")
 
     def _get_executable(self):
         return "minecraft://"
