@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### General
 
 - Added functions to list worlds, packs, screenshots, logs and more.
+- Improved typing
 
 ### Fixes
 
