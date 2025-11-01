@@ -275,6 +275,8 @@ def step_back(dir: str, stepsBack: int, suffix: str = "") -> Optional[str]:
 
 def get_bedrock_gdk(product: str, *paths: str) -> Optional[str]:
     root = os.path.expandvars(f"%appdata%\\{product}\\Users")
+    if not os.path.isdir(root):
+        return None
     for folder in os.listdir(root):
         user = os.path.join(root, folder, "games", "com.mojang", *paths)
         if os.path.isdir(user):
