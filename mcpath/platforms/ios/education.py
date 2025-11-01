@@ -2,6 +2,7 @@
 iOS Education Edition
 """
 
+from typing import Optional
 from os import path
 from mcpath.facades import Education
 from mcpath.utils import _get_app
@@ -9,7 +10,7 @@ import os
 
 
 class iOSEducationEdition(Education):
-    def _get_game_dir(self):
+    def _get_game_dir(self, *paths: str) -> Optional[str]:
         id = "12330300-C946-4B6D-9CFA-13935A828E9A"
         p = path.join(
             "/private",

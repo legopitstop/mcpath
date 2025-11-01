@@ -1,5 +1,6 @@
-import mcpath
 import pytest
+
+import mcpath
 
 
 @pytest.mark.xfail(
@@ -16,6 +17,15 @@ def test_bedrock():
     mcpath.bedrock.get_development_skin_packs_dir()
     mcpath.bedrock.get_screenshots_dir()
     mcpath.bedrock.get_logs_dir()
+
+    mcpath.bedrock.get_worlds()
+    mcpath.bedrock.get_resource_packs()
+    mcpath.bedrock.get_behavior_packs()
+    mcpath.bedrock.get_development_resource_packs()
+    mcpath.bedrock.get_development_behavior_packs()
+    mcpath.bedrock.get_development_skin_packs()
+    mcpath.bedrock.get_screenshots()
+    mcpath.bedrock.get_logs()
 
 
 def test_deprecated_bedrock():

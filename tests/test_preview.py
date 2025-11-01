@@ -17,6 +17,15 @@ def test_preview():
     mcpath.preview.get_screenshots_dir()
     mcpath.preview.get_logs_dir()
 
+    mcpath.preview.get_worlds()
+    mcpath.preview.get_resource_packs()
+    mcpath.preview.get_behavior_packs()
+    mcpath.preview.get_development_resource_packs()
+    mcpath.preview.get_development_behavior_packs()
+    mcpath.preview.get_development_skin_packs()
+    mcpath.preview.get_screenshots()
+    mcpath.preview.get_logs()
+
 
 def test_deprecated_preview():
     attrs = [

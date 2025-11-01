@@ -9,7 +9,7 @@ import os
 
 
 class iOSPreviewEdition(Preview):
-    def _get_game_dir(self):
+    def _get_game_dir(self, *paths):
         id = "319CE929-00A7-4AB9-ACA3-8007271E2707"
         p = path.join(
             "/private",

@@ -6,8 +6,9 @@ Linux, MacOS, Windows
 
 __all__ = ["Java"]
 
-from typing import Optional
+from typing import Optional, List
 from os import path
+import os
 
 from ..utils import deprecated
 
@@ -17,72 +18,37 @@ class Java:
     Java Edition facade.
     """
 
-    def launch(self):
-        """
-        Launches Minecraft.
-        """
+    def launch(self) -> Optional[str]:
         return self._launch()
 
-    def get_runtime(self, version: str):
-        """
-        Get the path to the java runtime executable.
-        """
+    def get_runtime(self, version: str) -> Optional[str]:
         return self._get_runtime(version)
 
-    def get_root_dir(self):
-        """
-        Get the path to the `.minecraft` folder.
-        """
+    def get_root_dir(self) -> Optional[str]:
         return self._get_root_dir()
 
-    def get_game_dir(self):
-        """
-        Get the path to the game directory.
-
-        NOTE: If you want the `.minecraft` folder use get_root_dir instead.
-        """
+    def get_game_dir(self) -> Optional[str]:
         return self._get_game_dir()
 
-    def get_launcher(self):
-        """
-        Get the path to the Minecraft launcher.
-        """
+    def get_launcher(self) -> Optional[str]:
         return self._get_launcher()
 
-    def get_versions_dir(self):
-        """
-        Get the path of the directory holding version jar files.
-        """
+    def get_versions_dir(self) -> Optional[str]:
         return self._get_versions_dir()
 
-    def get_saves_dir(self):
-        """
-        Get the path of the directory holding world files.
-        """
+    def get_saves_dir(self) -> Optional[str]:
         return self._get_saves_dir()
 
-    def get_resource_packs_dir(self):
-        """
-        Get the path of the directory holding resource pack files.
-        """
+    def get_resource_packs_dir(self) -> Optional[str]:
         return self._get_resource_packs_dir()
 
-    def get_screenshots_dir(self):
-        """
-        Get the path of the directory holding screenshot files.
-        """
+    def get_screenshots_dir(self) -> Optional[str]:
         return self._get_screenshots_dir()
 
-    def get_backups_dir(self):
-        """
-        Get the path of the directory holding world backups.
-        """
+    def get_backups_dir(self) -> Optional[str]:
         return self._get_backups_dir()
 
-    def get_logs_dir(self):
-        """
-        Get the path of the directory holding game log files.
-        """
+    def get_logs_dir(self) -> Optional[str]:
         return self._get_logs_dir()
 
     # backwards compatibility
@@ -134,7 +100,7 @@ class Java:
 
     # private
 
-    def _launch(self):
+    def _launch(self) -> Optional[str]:
         return None
 
     def _get_runtime(self, version) -> Optional[str]:
@@ -184,3 +150,66 @@ class Java:
         if game_dir is None:
             return None
         return path.join(game_dir, "logs")
+
+    def get_versions(self) -> List[str]:
+        root = self.get_versions_dir()
+        if not root:
+            return []
+        return [
+            path.join(root, folder)
+            for folder in os.listdir(root)
+            if path.isdir(path.join(root, folder))
+        ]
+
+    def get_saves(self) -> List[str]:
+        root = self.get_saves_dir()
+        if not root:
+            return []
+
+        return [
+            path.join(root, folder)
+            for folder in os.listdir(root)
+            if path.isdir(path.join(root, folder))
+            and path.isfile(path.join(root, folder, "level.dat"))
+        ]
+
+    def get_resource_packs(self) -> List[str]:
+        root = self.get_resource_packs_dir()
+        if not root:
+            return []
+        return [
+            path.join(root, folder)
+            for folder in os.listdir(root)
+            if path.isdir(path.join(root, folder))
+            and path.isfile(path.join(root, folder, "pack.mcmeta"))
+        ]
+
+    def get_screenshots(self) -> List[str]:
+        root = self.get_screenshots_dir()
+        if not root:
+            return []
+        return [
+            path.join(root, file)
+            for file in os.listdir(root)
+            if path.isfile(path.join(root, file)) and file.endswith(".png")
+        ]
+
+    def get_backups(self) -> List[str]:
+        root = self.get_backups_dir()
+        if not root:
+            return []
+        return [
+            path.join(root, file)
+            for file in os.listdir(root)
+            if path.isfile(path.join(root, file)) and file.endswith(".zip")
+        ]
+
+    def get_logs(self) -> List[str]:
+        root = self.get_logs_dir()
+        if not root:
+            return []
+        return [
+            path.join(root, file)
+            for file in os.listdir(root)
+            if path.isfile(path.join(root, file)) and file.endswith(".log")
+        ]

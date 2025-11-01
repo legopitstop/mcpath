@@ -7,9 +7,9 @@ from mcpath.facades import Bedrock
 
 
 class AndroidBedrockEdition(Bedrock):
-    def _get_game_dir(self):
+    def _get_game_dir(self, *paths: str):
         internal = path.join(
-            "data", "user", "0", "com.mojang.minecraftpe", "games", "com.mojang"
+            "data", "user", "0", "com.mojang.minecraftpe", "games", "com.mojang", *paths
         )
         external = path.join(
             "storage",
@@ -21,6 +21,7 @@ class AndroidBedrockEdition(Bedrock):
             "files",
             "games",
             "com.mojang",
+            *paths
         )
         if path.isdir(internal):
             return internal

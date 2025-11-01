@@ -7,9 +7,11 @@ __all__ = [
     "_get_latest_profile",
     "_get_version_manifest",
     "_get_app",
+    "get_bedrock_gdk",
+    "step_back",
 ]
 
-from typing import Union, Tuple, Callable, TypeVar, Optional, Any
+from typing import Generic, Union, Tuple, Callable, TypeVar, Optional, Any, cast
 from os import environ
 from sys import platform as _sys_platform
 import os
@@ -84,7 +86,7 @@ def _get_app():
     """
     # Pythonista module
     try:
-        import appex  # noqa: F401
+        import appex  # type: ignore # noqa: F401
 
         return "pythonista"
     except ImportError:
@@ -93,7 +95,7 @@ def _get_app():
     # Pyto module
     try:
 
-        import pyto_ui  # noqa: F401
+        import pyto_ui  # type: ignore # noqa: F401
 
         return "pyto"
     except ImportError:
@@ -165,8 +167,11 @@ class Platform:
 platform = Platform()
 
 
+T = TypeVar("T")
+
+
 # From: https://github.com/kivy/plyer/blob/master/plyer/utils.py
-class Proxy:
+class Proxy(Generic[T]):
     """
     Based on http://code.activestate.com/recipes/496741-object-proxying
     version by Tomer Filiba, PSF license.
@@ -180,10 +185,10 @@ class Proxy:
         object.__setattr__(self, "_name", name)
         object.__setattr__(self, "_facade", facade)
 
-    def _ensure_obj(self):
+    def _ensure_obj(self) -> T:
         obj = object.__getattribute__(self, "_obj")
         if obj:
-            return obj
+            return cast(T, obj)
         # do the import
         try:
             name = object.__getattribute__(self, "_name")
@@ -198,9 +203,9 @@ class Proxy:
             obj = facade()
 
         object.__setattr__(self, "_obj", obj)
-        return obj
+        return cast(T, obj)
 
-    def __getattribute__(self, name):
+    def __getattribute__(self, name) -> Any:
         result = None
 
         if name == "__doc__":
@@ -265,4 +270,13 @@ def step_back(dir: str, stepsBack: int, suffix: str = "") -> Optional[str]:
         dir = os.path.join(os.sep.join(path_parts[:-stepsBack]), suffix)
         if os.path.isdir(dir):
             return dir
+    return None
+
+
+def get_bedrock_gdk(product: str, *paths: str) -> Optional[str]:
+    root = os.path.expandvars(f"%appdata%\\{product}\\Users")
+    for folder in os.listdir(root):
+        user = os.path.join(root, folder, "games", "com.mojang", *paths)
+        if os.path.isdir(user):
+            return user
     return None

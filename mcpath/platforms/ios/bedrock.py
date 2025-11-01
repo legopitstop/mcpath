@@ -7,7 +7,7 @@ from mcpath.utils import _get_app
 
 
 class iOSBedrockEdition(Bedrock):
-    def _get_game_dir(self):
+    def _get_game_dir(self, *paths: str):
         app = _get_app()
         match app:
             case "pyto":

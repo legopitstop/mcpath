@@ -15,7 +15,7 @@ class LinuxBedrockEdition(Bedrock):
             os.system(f'"{path}"')
         return path
 
-    def _get_game_dir(self):
+    def _get_game_dir(self, *paths: str):
         fp = path.join(
             path.expanduser("~"),
             ".var",
@@ -39,7 +39,7 @@ class LinuxBedrockEdition(Bedrock):
                     data_dir = profile.get("dataDir")
                     if not data_dir:
                         return None
-                    p = path.join(data_dir, "games", "com.mojang")
+                    p = path.join(data_dir, "games", "com.mojang", *paths)
                     if path.isdir(p):
                         return p
                     return None
@@ -56,6 +56,7 @@ class LinuxBedrockEdition(Bedrock):
             "mcpelauncher",
             "games",
             "com.mojang",
+            *paths,
         )
         if path.isdir(p):
             return p

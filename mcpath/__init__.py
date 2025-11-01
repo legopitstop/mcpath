@@ -9,20 +9,29 @@ __all__ = [
     "education",
     "platform",
     "get_edition",
+    "has_edition",
 ]
-__version__ = "2.0.2"
+__version__ = "2.0.3"
 
-from typing import Optional
+from typing import Any, Optional, cast
 from mcpath import facades
 from mcpath.utils import platform, Proxy
 
-java = Proxy("java", facades.Java)
-bedrock = Proxy("bedrock", facades.Bedrock)
-preview = Proxy("preview", facades.Preview)
-education = Proxy("education", facades.Education)
+java: facades.JavaProtocol = cast(facades.JavaProtocol, Proxy("java", facades.Java))
+bedrock: facades.BedrockProtocol = cast(
+    facades.BedrockProtocol, Proxy("bedrock", facades.Bedrock)
+)
+preview: facades.PreviewProtocol = cast(
+    facades.PreviewProtocol, Proxy("preview", facades.Preview)
+)
+education: facades.EducationProtocol = cast(
+    facades.EducationProtocol, Proxy("education", facades.Education)
+)
 
 
-def get_edition(name: str) -> Optional[Proxy]:
+def get_edition(
+    name: str,
+) -> Optional[Any]:
     name = name.lower()
     match name:
         case "java":
