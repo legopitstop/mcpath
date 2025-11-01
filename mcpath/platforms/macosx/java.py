@@ -44,7 +44,7 @@ class OSXJavaEdition(Java):
             return p
         return None
 
-    def _get_game_dir(self):
+    def _get_game_dir(self, *paths):
         fp = path.join(
             path.expanduser("~"),
             "Library",
@@ -53,22 +53,22 @@ class OSXJavaEdition(Java):
             "launcher_profiles.json",
         )
         p = _get_latest_profile(fp)
-        if p and path.isdir(p):
+        if not p:
+            return None
+        p = path.join(p, *paths)
+        if path.isdir(p):
             return p
         # fallback
         p = path.join(
-            path.expanduser("~"), "Library", "Application Support", "minecraft"
+            path.expanduser("~"), "Library", "Application Support", "minecraft", *paths
         )
         if path.isdir(p):
             return p
         return None
 
-    def _get_root_dir(self):
+    def _get_root_dir(self, *paths):
         p = path.join(
-            path.expanduser("~"),
-            "Library",
-            "Application Support",
-            "minecraft",
+            path.expanduser("~"), "Library", "Application Support", "minecraft", *paths
         )
         if path.isdir(p):
             return p

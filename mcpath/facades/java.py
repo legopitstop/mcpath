@@ -24,11 +24,11 @@ class Java:
     def get_runtime(self, version: str) -> Optional[str]:
         return self._get_runtime(version)
 
-    def get_root_dir(self) -> Optional[str]:
-        return self._get_root_dir()
+    def get_root_dir(self, *paths: str) -> Optional[str]:
+        return self._get_root_dir(*paths)
 
-    def get_game_dir(self) -> Optional[str]:
-        return self._get_game_dir()
+    def get_game_dir(self, *paths: str) -> Optional[str]:
+        return self._get_game_dir(*paths)
 
     def get_launcher(self) -> Optional[str]:
         return self._get_launcher()
@@ -106,50 +106,32 @@ class Java:
     def _get_runtime(self, version) -> Optional[str]:
         return None
 
-    def _get_root_dir(self) -> Optional[str]:
+    def _get_root_dir(self, *paths: str) -> Optional[str]:
         return None
 
     def _get_launcher(self) -> Optional[str]:
         return None
 
-    def _get_game_dir(self) -> Optional[str]:
+    def _get_game_dir(self, *paths: str) -> Optional[str]:
         return None
 
     def _get_versions_dir(self) -> Optional[str]:
-        root_dir = self.get_root_dir()
-        if root_dir is None:
-            return None
-        return path.join(root_dir, "versions")
+        return self.get_root_dir("versions")
 
     def _get_saves_dir(self) -> Optional[str]:
-        game_dir = self.get_game_dir()
-        if game_dir is None:
-            return None
-        return path.join(game_dir, "saves")
+        return self.get_game_dir("saves")
 
     def _get_resource_packs_dir(self) -> Optional[str]:
-        game_dir = self.get_game_dir()
-        if game_dir is None:
-            return None
-        return path.join(game_dir, "resourcepacks")
+        return self.get_game_dir("resourcepacks")
 
     def _get_screenshots_dir(self) -> Optional[str]:
-        game_dir = self.get_game_dir()
-        if game_dir is None:
-            return None
-        return path.join(game_dir, "screenshots")
+        return self.get_game_dir("screenshots")
 
     def _get_backups_dir(self) -> Optional[str]:
-        game_dir = self.get_game_dir()
-        if game_dir is None:
-            return None
-        return path.join(game_dir, "backups")
+        return self.get_game_dir("backups")
 
     def _get_logs_dir(self) -> Optional[str]:
-        game_dir = self.get_game_dir()
-        if game_dir is None:
-            return None
-        return path.join(game_dir, "logs")
+        return self.get_game_dir("logs")
 
     def get_versions(self) -> List[str]:
         root = self.get_versions_dir()

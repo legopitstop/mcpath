@@ -41,19 +41,19 @@ class LinuxJavaEdition(Java):
             return p
         return None
 
-    def _get_game_dir(self):
+    def _get_game_dir(self, *paths):
         fp = path.join(path.expanduser("~"), ".minecraft", "launcher_profiles.json")
         p = _get_latest_profile(fp)
         if p and path.isdir(p):
             return p
         # fallback
-        p = path.join(path.expanduser("~"), ".minecraft")
+        p = path.join(path.expanduser("~"), ".minecraft", *paths)
         if path.isdir(p):
             return p
         return None
 
-    def _get_root_dir(self):
-        p = path.join(path.expanduser("~"), ".minecraft")
+    def _get_root_dir(self, *paths):
+        p = path.join(path.expanduser("~"), ".minecraft", *paths)
         if path.isdir(p):
             return p
         return None

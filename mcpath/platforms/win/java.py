@@ -38,12 +38,6 @@ class WinJavaEdition(Java):
             return p
         return "java"
 
-    def _get_root_dir(self):
-        p = path.expandvars("%APPDATA%\\.minecraft")
-        if path.isdir(p):
-            return p
-        return None
-
     def _get_launcher(self):
         p = path.join(
             "C:\\" + "XboxGames", "Minecraft Launcher", "Content", "Minecraft.exe"
@@ -58,13 +52,22 @@ class WinJavaEdition(Java):
             return p
         return None
 
-    def _get_game_dir(self):
+    def _get_root_dir(self, *paths):
+        p = path.join(path.expandvars("%APPDATA%\\.minecraft"), *paths)
+        if path.isdir(p):
+            return p
+        return None
+
+    def _get_game_dir(self, *paths):
         fp = path.expandvars("%APPDATA%\\.minecraft\\launcher_profiles.json")
         p = _get_latest_profile(fp)
-        if p and path.isdir(p):
+        if not p:
+            return None
+        p = path.join(p, *paths)
+        if path.isdir(p):
             return p
         # fallback
-        return self.get_root_dir()
+        return self.get_root_dir(*paths)
 
 
 def instance():
