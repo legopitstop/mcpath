@@ -8,7 +8,7 @@ import configparser
 import os
 
 
-class LinuxBedrockEdition(BedrockUWP):
+class LinuxBedrockUWP(BedrockUWP):
     def _launch(self):
         path = self.get_executable()
         if path:
@@ -81,4 +81,4 @@ class LinuxBedrockEdition(BedrockUWP):
 
 
 def instance():
-    return LinuxBedrockEdition()
+    return LinuxBedrockUWP()

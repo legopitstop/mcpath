@@ -2,8 +2,14 @@
 Linux Preview Edition
 """
 
-from .preview_uwp import LinuxPreviewEdition
+from typing import List
+from .preview_uwp import LinuxPreviewUWP
+
+
+class LinuxPreviewGDK(LinuxPreviewUWP):
+    def get_users(self) -> List[str]:
+        return []
 
 
 def instance():
-    return LinuxPreviewEdition()
+    return LinuxPreviewGDK()

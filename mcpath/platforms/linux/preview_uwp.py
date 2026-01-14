@@ -5,9 +5,9 @@ Linux Preview Edition
 from mcpath.facades import PreviewUWP
 
 
-class LinuxPreviewEdition(PreviewUWP):
+class LinuxPreviewUWP(PreviewUWP):
     pass
 
 
 def instance():
-    return LinuxPreviewEdition()
+    return LinuxPreviewUWP()
