@@ -2,11 +2,7 @@
 Android Preview Edition
 """
 
-from mcpath.facades import Preview
-
-
-class AndroidPreviewEdition(Preview):
-    pass
+from .preview_uwp import AndroidPreviewEdition
 
 
 def instance():

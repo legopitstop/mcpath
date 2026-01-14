@@ -1,3 +1,3 @@
 import mcpath
 
-mcpath.java.start()
+mcpath.java.launch()

@@ -2,10 +2,10 @@
 MacOS X Bedrock Edition
 """
 
-from mcpath.facades import Bedrock
+from mcpath.facades import BedrockUWP
 
 
-class OSXBedrockEdition(Bedrock):
+class OSXBedrockEdition(BedrockUWP):
     pass
 
 

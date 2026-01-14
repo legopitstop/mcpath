@@ -4,10 +4,10 @@ Windows Education Edition
 
 from typing import Optional
 from os import path
-from mcpath.facades import Education
+from mcpath.facades import EducationUWP
 
 
-class WinEducationEdition(Education):
+class WinEducationUWPEdition(EducationUWP):
     def _get_game_dir(self, *paths: str) -> Optional[str]:
         p = path.expandvars(
             "%LOCALAPPDATA%\\Packages\\Microsoft.MinecraftEducationEdition_8wekyb3d8bbwe\\LocalState\\games\\com.mojang"
@@ -21,4 +21,4 @@ class WinEducationEdition(Education):
 
 
 def instance():
-    return WinEducationEdition()
+    return WinEducationUWPEdition()

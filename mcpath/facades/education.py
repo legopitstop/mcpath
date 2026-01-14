@@ -4,14 +4,22 @@ Supported Platforms
 iOS, Windows
 """
 
-__all__ = ["Education"]
+__all__ = ["EducationUWP", "EducationGDK"]
 
-from .bedrock import Bedrock
+from .bedrock import BedrockUWP, BedrockGDK
 
 
-class Education(Bedrock):
+class EducationUWP(BedrockUWP):
     """
-    Education Edition facade.
+    Education Edition UWP facade.
+    """
+
+    pass
+
+
+class EducationGDK(BedrockGDK):
+    """
+    Education Edition GDK facade.
     """
 
     pass

@@ -10,8 +10,6 @@ from typing import Optional, List
 from os import path
 import os
 
-from ..utils import deprecated
-
 
 class Java:
     """
@@ -33,6 +31,9 @@ class Java:
     def get_launcher(self) -> Optional[str]:
         return self._get_launcher()
 
+    def get_launcher_logs(self) -> Optional[str]:
+        return self._get_launcher_logs()
+
     def get_versions_dir(self) -> Optional[str]:
         return self._get_versions_dir()
 
@@ -51,53 +52,6 @@ class Java:
     def get_logs_dir(self) -> Optional[str]:
         return self._get_logs_dir()
 
-    # backwards compatibility
-
-    @property
-    @deprecated
-    def game(self):
-        return self.get_game_dir()
-
-    @property
-    @deprecated
-    def launcher(self):
-        return self.get_launcher()
-
-    @property
-    @deprecated
-    def executable(self):
-        return self.get_versions_dir()
-
-    @property
-    @deprecated
-    def worlds(self):
-        return self.get_saves_dir()
-
-    @property
-    @deprecated
-    def resource_packs(self):
-        return self.get_resource_packs_dir()
-
-    @property
-    @deprecated
-    def behavior_packs(self):
-        return ""
-
-    @property
-    @deprecated
-    def development_resource_packs(self):
-        return self.get_resource_packs_dir()
-
-    @property
-    @deprecated
-    def development_behavior_packs(self):
-        return ""
-
-    @property
-    @deprecated
-    def screenshots(self):
-        return self.get_screenshots_dir()
-
     # private
 
     def _launch(self) -> Optional[str]:
@@ -114,6 +68,12 @@ class Java:
 
     def _get_game_dir(self, *paths: str) -> Optional[str]:
         return None
+
+    def _get_launcher_logs(self) -> Optional[str]:
+        root = self.get_root_dir()
+        if not root:
+            return None
+        return os.path.join(root, "launcher_log.txt")
 
     def _get_versions_dir(self) -> Optional[str]:
         return self.get_root_dir("versions")

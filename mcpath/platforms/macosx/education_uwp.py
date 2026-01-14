@@ -2,10 +2,10 @@
 MacOS X Education Edition
 """
 
-from mcpath.facades import Education
+from mcpath.facades import EducationUWP
 
 
-class OSXEducationEdition(Education):
+class OSXEducationEdition(EducationUWP):
     pass
 
 

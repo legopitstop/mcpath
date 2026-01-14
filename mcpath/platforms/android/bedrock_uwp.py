@@ -3,10 +3,10 @@ Android Bedrock Edition
 """
 
 from os import path
-from mcpath.facades import Bedrock
+from mcpath.facades import BedrockUWP
 
 
-class AndroidBedrockEdition(Bedrock):
+class AndroidBedrockEdition(BedrockUWP):
     def _get_game_dir(self, *paths: str):
         internal = path.join(
             "data", "user", "0", "com.mojang.minecraftpe", "games", "com.mojang", *paths

@@ -2,10 +2,10 @@
 Linux Education Edition
 """
 
-from mcpath.facades import Education
+from mcpath.facades import EducationUWP
 
 
-class LinuxEducationEdition(Education):
+class LinuxEducationEdition(EducationUWP):
     pass
 
 

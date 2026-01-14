@@ -4,14 +4,22 @@ Supported Platforms
 iOS, Windows
 """
 
-__all__ = ["Preview"]
+__all__ = ["PreviewUWP", "PreviewGDK"]
 
-from .bedrock import Bedrock
+from .bedrock import BedrockUWP, BedrockGDK
 
 
-class Preview(Bedrock):
+class PreviewUWP(BedrockUWP):
     """
-    Preview Edition facade.
+    Preview Edition UWP facade.
+    """
+
+    pass
+
+
+class PreviewGDK(BedrockGDK):
+    """
+    Preview Edition GDK facade.
     """
 
     pass

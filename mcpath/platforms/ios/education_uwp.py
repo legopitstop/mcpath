@@ -1,16 +1,17 @@
 """
-iOS Preview Edition
+iOS Education Edition
 """
 
+from typing import Optional
 from os import path
-from mcpath.facades import Preview
+from mcpath.facades import EducationUWP
 from mcpath.utils import _get_app
 import os
 
 
-class iOSPreviewEdition(Preview):
-    def _get_game_dir(self, *paths):
-        id = "319CE929-00A7-4AB9-ACA3-8007271E2707"
+class iOSEducationEdition(EducationUWP):
+    def _get_game_dir(self, *paths: str) -> Optional[str]:
+        id = "12330300-C946-4B6D-9CFA-13935A828E9A"
         p = path.join(
             "/private",
             "var",
@@ -35,6 +36,7 @@ class iOSPreviewEdition(Preview):
                     if id in d:
                         return p
                     print("Invalid directory!")
+
             case "pythonista":
                 # 1. Tap the hamburger menu at the top left
                 # 2. Under "EXTERNAL FILES" tap "Open..."
@@ -45,8 +47,8 @@ class iOSPreviewEdition(Preview):
         raise PermissionError()
 
     def _get_executable(self):
-        return "minecraft-preview://"
+        return "minecraftEdu://"
 
 
 def instance():
-    return iOSPreviewEdition()
+    return iOSEducationEdition()

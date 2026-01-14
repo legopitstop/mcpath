@@ -1,3 +1,3 @@
 import mcpath
 
-mcpath.preview.start()
+mcpath.preview.launch()

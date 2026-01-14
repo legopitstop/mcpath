@@ -1,3 +1,3 @@
 import mcpath
 
-mcpath.bedrock.start()
+mcpath.bedrock.launch()

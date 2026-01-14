@@ -1,3 +1,3 @@
 import mcpath
 
-mcpath.education.start()
+mcpath.education.launch()

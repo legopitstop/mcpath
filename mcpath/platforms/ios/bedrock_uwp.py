@@ -2,11 +2,11 @@
 iOS Bedrock Edition
 """
 
-from mcpath.facades import Bedrock
+from mcpath.facades import BedrockUWP
 from mcpath.utils import _get_app
 
 
-class iOSBedrockEdition(Bedrock):
+class iOSBedrockEdition(BedrockUWP):
     def _get_game_dir(self, *paths: str):
         app = _get_app()
         match app:

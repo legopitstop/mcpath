@@ -3,12 +3,12 @@ Linux Bedrock Edition
 """
 
 from os import path
-from mcpath.facades import Bedrock
+from mcpath.facades import BedrockUWP
 import configparser
 import os
 
 
-class LinuxBedrockEdition(Bedrock):
+class LinuxBedrockEdition(BedrockUWP):
     def _launch(self):
         path = self.get_executable()
         if path:

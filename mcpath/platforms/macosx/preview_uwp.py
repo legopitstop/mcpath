@@ -2,10 +2,10 @@
 MacOS X Preview Edition
 """
 
-from mcpath.facades import Preview
+from mcpath.facades import PreviewUWP
 
 
-class OSXPreviewEdition(Preview):
+class OSXPreviewEdition(PreviewUWP):
     pass
 
 
