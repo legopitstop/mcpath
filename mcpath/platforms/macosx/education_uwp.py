@@ -5,9 +5,9 @@ MacOS X Education Edition
 from mcpath.facades import EducationUWP
 
 
-class OSXEducationEdition(EducationUWP):
+class OSXEducationUWP(EducationUWP):
     pass
 
 
 def instance():
-    return OSXEducationEdition()
+    return OSXEducationUWP()

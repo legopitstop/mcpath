@@ -5,9 +5,9 @@ MacOS X Bedrock Edition
 from mcpath.facades import BedrockUWP
 
 
-class OSXBedrockEdition(BedrockUWP):
+class OSXBedrockUWP(BedrockUWP):
     pass
 
 
 def instance():
-    return OSXBedrockEdition()
+    return OSXBedrockUWP()
