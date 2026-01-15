@@ -18,7 +18,8 @@ class WinBedrockGDK(BedrockGDK):
         root = self.get_root_dir()
         if not root:
             return None
-        return path.join(root, "users", user or "Shared", *paths)
+        p = path.join(root, "users", user or "Shared", "games", "com.mojang", *paths)
+        return p if os.path.exists(p) else None
 
     def _get_logs_dir(self):
         game_dir = self.get_game_dir()
