@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixes
 
 - bedrockGDK now returns the correct game directory.
-- bedrockGDK now checks if the path exists, returning None if it does'nt exist.
+- bedrockGDK now checks if the path exists, returning None if it doesn't exist.
 
 ## [2.1.0] - 1/14/2026
 
