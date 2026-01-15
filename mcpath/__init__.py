@@ -11,7 +11,7 @@ __all__ = [
     "get_edition",
     "has_edition",
 ]
-__version__ = "2.1.0"
+__version__ = "2.1.1"
 
 from typing import cast
 from mcpath import facades
