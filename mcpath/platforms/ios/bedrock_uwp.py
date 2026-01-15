@@ -6,7 +6,7 @@ from mcpath.facades import BedrockUWP
 from mcpath.utils import _get_app
 
 
-class iOSBedrockEdition(BedrockUWP):
+class iOSBedrockUWP(BedrockUWP):
     def _get_game_dir(self, *paths: str):
         app = _get_app()
         match app:
@@ -32,4 +32,4 @@ class iOSBedrockEdition(BedrockUWP):
 
 
 def instance():
-    return iOSBedrockEdition()
+    return iOSBedrockUWP()

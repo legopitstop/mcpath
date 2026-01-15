@@ -5,9 +5,9 @@ Android Preview Edition
 from mcpath.facades import PreviewUWP
 
 
-class AndroidPreviewEdition(PreviewUWP):
+class AndroidPreviewUWP(PreviewUWP):
     pass
 
 
 def instance():
-    return AndroidPreviewEdition()
+    return AndroidPreviewUWP()

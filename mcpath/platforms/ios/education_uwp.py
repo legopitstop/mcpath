@@ -9,7 +9,7 @@ from mcpath.utils import _get_app
 import os
 
 
-class iOSEducationEdition(EducationUWP):
+class iOSEducationUWP(EducationUWP):
     def _get_game_dir(self, *paths: str) -> Optional[str]:
         id = "12330300-C946-4B6D-9CFA-13935A828E9A"
         p = path.join(
@@ -51,4 +51,4 @@ class iOSEducationEdition(EducationUWP):
 
 
 def instance():
-    return iOSEducationEdition()
+    return iOSEducationUWP()

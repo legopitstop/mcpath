@@ -8,7 +8,7 @@ from mcpath.utils import _get_app
 import os
 
 
-class iOSPreviewEdition(PreviewUWP):
+class iOSPreviewUWP(PreviewUWP):
     def _get_game_dir(self, *paths):
         id = "319CE929-00A7-4AB9-ACA3-8007271E2707"
         p = path.join(
@@ -49,4 +49,4 @@ class iOSPreviewEdition(PreviewUWP):
 
 
 def instance():
-    return iOSPreviewEdition()
+    return iOSPreviewUWP()

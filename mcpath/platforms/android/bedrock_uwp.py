@@ -6,7 +6,7 @@ from os import path
 from mcpath.facades import BedrockUWP
 
 
-class AndroidBedrockEdition(BedrockUWP):
+class AndroidBedrockUWP(BedrockUWP):
     def _get_game_dir(self, *paths: str):
         internal = path.join(
             "data", "user", "0", "com.mojang.minecraftpe", "games", "com.mojang", *paths
@@ -34,4 +34,4 @@ class AndroidBedrockEdition(BedrockUWP):
 
 
 def instance():
-    return AndroidBedrockEdition()
+    return AndroidBedrockUWP()

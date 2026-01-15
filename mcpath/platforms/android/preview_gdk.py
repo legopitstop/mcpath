@@ -2,8 +2,14 @@
 Android Preview Edition
 """
 
-from .preview_uwp import AndroidPreviewEdition
+from typing import List
+from .preview_uwp import AndroidPreviewUWP
+
+
+class AndroidPreviewGDK(AndroidPreviewUWP):
+    def get_users(self) -> List[str]:
+        return []
 
 
 def instance():
-    return AndroidPreviewEdition()
+    return AndroidPreviewGDK()
